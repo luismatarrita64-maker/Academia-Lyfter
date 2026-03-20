@@ -1,0 +1,2 @@
+class torso:
+    pass

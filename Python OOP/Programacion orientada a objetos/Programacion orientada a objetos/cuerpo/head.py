@@ -1,0 +1,2 @@
+class head:
+    pass
