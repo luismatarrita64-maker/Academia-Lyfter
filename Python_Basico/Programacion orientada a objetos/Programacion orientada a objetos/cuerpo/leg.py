@@ -1,0 +1,2 @@
+class leg:
+    pass
