@@ -9,19 +9,19 @@ class Bus:
         self.passengers = []
 
     def add_passenger(self, person):
+        if not isinstance(person, Person):
+            raise TypeError("The passenger must be an instance of Person")
         if len(self.passengers) < self.max_passengers:
             self.passengers.append(person)
             print(f"{person.name} got on the bus")
         else:
-            print("The bus is full")
+            raise Exception("The bus is full")
 
     def remove_passenger(self):
-        if self.passengers:
-            person = self.passengers.pop()
-            print(f"{person.name} got off the bus")
-        else:
-            print("There are no passengers on the bus")
-
+        if not self.passengers:
+            raise Exception("There are no passengers on the bus")
+        person = self.passengers.pop()
+        print(f"{person.name} got off the bus")
 
 
 p1 = Person("Alice")
@@ -32,8 +32,16 @@ bus = Bus(2)
 
 bus.add_passenger(p1)
 bus.add_passenger(p2)
-bus.add_passenger(p3)   
+
+try:
+    bus.add_passenger(p3)
+except Exception as e:
+    print(e)
 
 bus.remove_passenger()
 bus.remove_passenger()
-bus.remove_passenger()  
+
+try:
+    bus.remove_passenger()
+except Exception as e:
+    print(e)
