@@ -11,7 +11,7 @@ def decorator(func):
         result = func(*args, **kwargs)
 
         #codigo despues de ejecutar la función original
-        print(f"retunr: {result}")
+        print(f"return: {result}")
 
 
         return result

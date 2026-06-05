@@ -15,7 +15,15 @@ class User:
     @property
     def age(self):
         today = date.today()
-        return today.year - self.date_of_birth.year    
+        year = today.year - self.date_of_birth.year
+        
+        birthday_this_year = (today.month , today.day)
+        birthday = (self.date_of_birth.month,self.date_of_birth.day)
+
+        if birthday > birthday_this_year:
+            year -= 1
+
+        return  year
 
 def check_age(func):
             def wrapper(user, *args, **kwargs):
